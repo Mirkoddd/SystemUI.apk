@@ -203,6 +203,8 @@
 
 .field mQueueLock:Ljava/lang/Object;
 
+.field mQuickSettingScroller:Landroid/widget/HorizontalScrollView;
+
 .field mQuickSettingView:Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingPanel;
 
 .field private mRecentTasksLoader:Lcom/android/systemui/recent/RecentTasksLoader;
@@ -8029,6 +8031,22 @@
 
     if-eqz v18, :cond_55e
 
+    const v18, 0x7f0f00c7
+
+    move/from16 v0, v18
+
+    invoke-virtual {v6, v0}, Lcom/android/systemui/statusbar/phone/ExpandedView;->findViewById(I)Landroid/view/View;
+
+    move-result-object v18
+
+    check-cast v18, Landroid/widget/HorizontalScrollView;
+
+    move-object/from16 v0, v18
+
+    move-object/from16 v1, p0
+
+    iput-object v0, v1, Lcom/android/systemui/statusbar/phone/PhoneStatusBar;->mQuickSettingScroller:Landroid/widget/HorizontalScrollView;
+
     .line 617
     const v18, 0x7f0f00b5
 
@@ -8470,8 +8488,9 @@
 .end method
 
 .method protected onConfigurationChanged(Landroid/content/res/Configuration;)V
-    .registers 5
-    .parameter "newConfig"
+    .registers 6
+
+    const/4 v3, 0x0
 
     .prologue
     .line 1079
@@ -8509,6 +8528,10 @@
 
     if-eqz v0, :cond_28
 
+    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/PhoneStatusBar;->mQuickSettingScroller:Landroid/widget/HorizontalScrollView;
+
+    invoke-virtual {v0, v3, v3}, Landroid/widget/HorizontalScrollView;->smoothScrollTo(II)V
+
     .line 1087
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/PhoneStatusBar;->mQuickSettingView:Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingPanel;
 
@@ -8545,6 +8568,10 @@
     sget-boolean v0, Lcom/android/systemui/statusbar/phone/PhoneStatusBar;->useTouchWizGUI:Z
 
     if-eqz v0, :cond_28
+
+    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/PhoneStatusBar;->mQuickSettingScroller:Landroid/widget/HorizontalScrollView;
+
+    invoke-virtual {v0, v3, v3}, Landroid/widget/HorizontalScrollView;->smoothScrollTo(II)V
 
     .line 1092
     iget-object v0, p0, Lcom/android/systemui/statusbar/phone/PhoneStatusBar;->mQuickSettingView:Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingPanel;
@@ -8982,7 +9009,10 @@
 
     if-eqz v4, :cond_6
 
-    .line 2031
+    iget-object v4, p0, Lcom/android/systemui/statusbar/phone/PhoneStatusBar;->mQuickSettingScroller:Landroid/widget/HorizontalScrollView;
+
+    invoke-virtual {v4, v7, v7}, Landroid/widget/HorizontalScrollView;->scrollTo(II)V
+
     iget-object v4, p0, Lcom/android/systemui/statusbar/phone/PhoneStatusBar;->mQuickSettingView:Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingPanel;
 
     iget-boolean v5, p0, Lcom/android/systemui/statusbar/phone/PhoneStatusBar;->mExpanded:Z
@@ -9280,6 +9310,10 @@
     move-result v3
 
     if-eqz v3, :cond_76
+
+    iget-object v3, p0, Lcom/android/systemui/statusbar/phone/PhoneStatusBar;->mQuickSettingView:Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingPanel;
+
+    invoke-virtual {v3}, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingPanel;->startScrollAnimation()V
 
     .line 1952
     :cond_76

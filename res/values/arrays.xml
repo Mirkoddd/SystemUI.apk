@@ -6,6 +6,12 @@
         <item>Location</item>
         <item>SilentMode</item>
         <item>AutoRotate</item>
+        <item>PowerSaving</item>
+        <item>DoNotDisturb</item>
+        <item>MobileData</item>
+        <item>DrivingMode</item>
+        <item>Sync</item>
+        <item>AirplaneMode</item>
     </string-array>
     <string-array name="mini_mode_apps">
         <item>com.sec.minimode.minidialertabservice.DialerTabService</item>
