@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.systemui.statusbar.tablet.MiniModeAppsPanel android:id="@id/recents_bg_protect" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="bottom" android:id="@id/mini_mode_apps_bg" android:background="@drawable/traybar_status_bg" android:layout_width="fill_parent" android:layout_height="47.0dip" android:layout_marginBottom="@android:dimen/status_bar_height" />
+    <HorizontalScrollView android:scrollbarSize="200.0dip" android:scrollbarThumbHorizontal="@drawable/scrollbar_handle_horizontal" android:scrollbarStyle="outsideOverlay" android:layout_gravity="bottom" android:id="@id/mini_mode_apps_scroller" android:paddingLeft="@dimen/mini_app_tray_container_padding" android:paddingRight="@dimen/mini_app_tray_container_padding" android:scrollbars="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@android:dimen/status_bar_height" android:minWidth="800.0dip" android:minHeight="130.0dip" android:scrollbarDefaultDelayBeforeFade="350" android:fadeScrollbars="true" android:overScrollMode="never">
+        <LinearLayout android:gravity="bottom" android:layout_gravity="bottom|left|center" android:orientation="horizontal" android:id="@id/mini_mode_apps_container" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </HorizontalScrollView>
+    <LinearLayout android:layout_gravity="bottom" android:id="@id/mini_mode_apps_empty_button_container" android:background="@null" android:layout_width="fill_parent" android:layout_height="47.0dip" android:layout_marginBottom="@android:dimen/status_bar_height">
+        <TextView android:textSize="16.0dip" android:gravity="center" android:layout_gravity="center" android:id="@id/mini_mode_apps_panel_empty_button" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/mini_apps_no_selected_apps" />
+    </LinearLayout>
+    <FrameLayout android:layout_gravity="bottom" android:id="@id/mini_mode_tray" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@drawable/traybar_handler_bg" android:paddingTop="2.0dip" android:paddingBottom="2.0dip" android:layout_width="fill_parent" android:layout_height="@android:dimen/status_bar_height">
+            <ImageView android:id="@id/close_icon" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/miniapp_traybar_handler" />
+        </LinearLayout>
+        <Button android:textAppearance="@style/TextAppearance_EditButton" android:textColor="#bff0f0f0" android:layout_gravity="bottom|right|center" android:id="@id/mini_mode_apps_panel_edit_button" android:background="@drawable/edit_button" android:layout_width="wrap_content" android:layout_height="35.0dip" android:layout_marginRight="11.0dip" android:layout_marginBottom="7.0dip" android:minWidth="88.0dip" android:text="@string/edit" android:shadowColor="#ff000000" android:shadowDy="-1.0" android:shadowRadius="1.0" />
+    </FrameLayout>
+</com.android.systemui.statusbar.tablet.MiniModeAppsPanel>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="status_bar_accessibility_recent_apps">
+        <item quantity="other">%d legutóbbi alkalmazás</item>
+        <item quantity="one">1 legutóbbi alkalmazás</item>
+    </plurals>
+</resources>

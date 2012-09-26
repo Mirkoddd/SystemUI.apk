@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="15.0dip" android:textColor="#ffd7d7d7" android:id="@id/label" android:layout_width="46.0dip" android:layout_height="wrap_content" android:layout_marginRight="4.0dip" android:singleLine="false" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <CheckBox android:id="@id/toggle" android:layout_width="30.0dip" android:layout_height="28.0dip" android:layout_toLeftOf="@id/label" android:layout_centerVertical="true" />
+    <SeekBar android:id="@id/slider" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/toggle" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+</RelativeLayout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="QuickSettingButtonAttribute">
+        <item>Wifi</item>
+        <item>Bluetooth</item>
+        <item>Location</item>
+        <item>SilentMode</item>
+        <item>AutoRotate</item>
+    </string-array>
+    <string-array name="mini_mode_apps">
+        <item>com.sec.minimode.minidialertabservice.DialerTabService</item>
+        <item>com.sec.minimode.mms.minimode.MiniMessageService</item>
+        <item>com.sec.minimode.memail.MiniEmailService</item>
+        <item>com.sec.minimode.taskcloser.MiniTaskcloserService</item>
+        <item>com.diotek.mini_penmemo.Mini_PenMemo_Service</item>
+        <item>com.android.calendar.month.MiniCalendarService</item>
+        <item>com.sec.minimode.music.MiniMusicService</item>
+        <item>com.android.deskclock.MiniAlarmClockService</item>
+        <item>com.sec.android.app.worldclock.MiniWorldClockService</item>
+        <item>com.sec.android.app.popupcalculator.PopupCalculatorService</item>
+    </string-array>
+</resources>

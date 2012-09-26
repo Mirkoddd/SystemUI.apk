@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="config_maxNotificationIcons">5</integer>
+    <integer name="config_maxLevelOfSignalStrengthIndicator">4</integer>
+    <integer name="config_maxNotificationIconsNum">5</integer>
+    <integer name="config_QuickSettingButtonCount">5</integer>
+</resources>

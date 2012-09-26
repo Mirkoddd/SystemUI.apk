@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:focusable="false" android:layout_width="fill_parent" android:layout_height="@dimen/quick_setting_button_height">
+        <ImageView android:layout_gravity="center" android:id="@id/btn_image" android:layout_width="fill_parent" android:layout_height="@dimen/quick_setting_button_image_height" android:layout_marginTop="2.0dip" />
+        <TextView android:textSize="@dimen/quick_setting_button_text_size" android:textColor="#ffffffff" android:gravity="center" android:id="@id/btn_text" android:layout_width="fill_parent" android:layout_height="@dimen/quick_setting_button_text_height" android:includeFontPadding="false" android:shadowColor="#ff000000" android:shadowDx="1.0" android:shadowDy="1.0" android:shadowRadius="2.0" />
+        <ImageView android:layout_gravity="center" android:id="@id/btn_status_image" android:paddingLeft="4.0dip" android:paddingTop="@dimen/quick_setting_button_status_padding" android:paddingRight="4.0dip" android:paddingBottom="@dimen/quick_setting_button_status_padding" android:layout_width="fill_parent" android:layout_height="@dimen/quick_setting_button_status_height" android:scaleType="fitXY" android:drawable="@drawable/tw_quick_panel_off" />
+    </LinearLayout>
+</merge>

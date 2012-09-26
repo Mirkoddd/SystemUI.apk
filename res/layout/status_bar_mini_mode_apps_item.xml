@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/mini_mode_apps_item" android:layout_width="@dimen/mini_app_tray_item_width" android:layout_height="wrap_content" android:minWidth="@dimen/mini_app_tray_item_width"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center" android:id="@id/app_icon" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="center" />
+    <TextView android:textSize="16.0dip" android:ellipsize="marquee" android:gravity="left" android:layout_gravity="bottom|center" android:id="@id/app_label" android:fadingEdge="horizontal" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6.0dip" android:maxWidth="@dimen/mini_app_tray_item_width" android:singleLine="true" android:shadowColor="#ff000000" android:shadowDx="1.0" android:shadowDy="1.0" android:shadowRadius="1.0" />
+</FrameLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="status_bar_accessibility_recent_apps">
+        <item quantity="other">Neseniai įdiegtos programos: %d</item>
+        <item quantity="one">1 neseniai įdiegta programa</item>
+    </plurals>
+</resources>

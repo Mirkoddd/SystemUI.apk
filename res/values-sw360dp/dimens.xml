@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="status_bar_edge_ignore">5.0dip</dimen>
+    <dimen name="status_bar_recents_app_icon_max_width">48.0dip</dimen>
+    <dimen name="status_bar_recents_app_icon_max_height">48.0dip</dimen>
+    <dimen name="status_bar_recents_thumbnail_width">164.0dip</dimen>
+    <dimen name="status_bar_recents_thumbnail_height">145.0dip</dimen>
+    <dimen name="status_bar_recents_app_label_text_size">14.0dip</dimen>
+    <dimen name="status_bar_recents_app_description_text_size">14.0dip</dimen>
+    <dimen name="status_bar_recents_fading_edge_length">20.0dip</dimen>
+    <dimen name="status_bar_recents_right_glow_margin">100.0dip</dimen>
+    <dimen name="peek_window_y_offset">-12.0dip</dimen>
+    <dimen name="navigation_bar_size">@android:dimen/navigation_bar_height</dimen>
+    <dimen name="navigation_bar_deadzone_size">12.0dip</dimen>
+    <dimen name="notification_height">65.0dip</dimen>
+    <dimen name="status_bar_icon_size">@android:dimen/status_bar_icon_size</dimen>
+    <dimen name="status_bar_icon_drawing_size">18.0dip</dimen>
+    <item type="dimen" name="status_bar_icon_drawing_alpha">54.999996%</item>
+    <dimen name="status_bar_icon_padding">0.0dip</dimen>
+    <dimen name="notification_divider_height">1.0dip</dimen>
+    <dimen name="self_expand_velocity">2000.0dip</dimen>
+    <dimen name="self_collapse_velocity">2000.0dip</dimen>
+    <dimen name="fling_expand_min_velocity">200.0dip</dimen>
+    <dimen name="fling_collapse_min_velocity">200.0dip</dimen>
+    <dimen name="fling_gesture_max_x_velocity">200.0dip</dimen>
+    <item type="dimen" name="collapse_min_display_fraction">10.000002%</item>
+    <item type="dimen" name="expand_min_display_fraction">50.0%</item>
+    <dimen name="expand_accel">2000.0dip</dimen>
+    <dimen name="collapse_accel">2000.0dip</dimen>
+    <dimen name="global_screenshot_bg_padding">20.0dip</dimen>
+    <dimen name="status_bar_recents_launch_button_margin">46.0dip</dimen>
+    <dimen name="quick_setting_button_width">71.5dip</dimen>
+    <dimen name="quick_setting_button_height">90.0dip</dimen>
+    <dimen name="quick_setting_button_image_height">46.0dip</dimen>
+    <dimen name="quick_setting_button_text_height">32.0dip</dimen>
+    <dimen name="quick_setting_button_text_size">13.0dip</dimen>
+    <dimen name="quick_setting_button_status_height">10.0dip</dimen>
+    <dimen name="quick_setting_button_status_padding">3.0dip</dimen>
+    <dimen name="status_bar_expanded_plmn_height">44.0dip</dimen>
+    <dimen name="status_bar_expanded_plmn_text_size">18.0dip</dimen>
+    <dimen name="status_bar_expanded_date_text_size">17.0dip</dimen>
+    <dimen name="status_bar_expanded_setting_button_height">56.0dip</dimen>
+    <dimen name="status_bar_expanded_setting_button_text_size">20.0dip</dimen>
+    <dimen name="status_bar_expanded_notification_category_height">28.0dip</dimen>
+    <dimen name="status_bar_expanded_notification_category_text_size">17.0dip</dimen>
+    <dimen name="status_bar_expanded_notification_clear_button_text_size">15.0dip</dimen>
+    <dimen name="status_bar_expanded_notification_height">65.0dip</dimen>
+    <dimen name="status_bar_expanded_notification_content_height">64.0dip</dimen>
+    <dimen name="tw_status_bar_recent_panel_button_text_size">20.0dip</dimen>
+</resources>

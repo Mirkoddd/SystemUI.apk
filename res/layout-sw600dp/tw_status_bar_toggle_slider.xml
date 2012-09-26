@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/auto_brightness_group" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true">
+        <CheckBox android:id="@id/toggle" android:clickable="false" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_centerVertical="true" />
+        <TextView android:textSize="18.0dip" android:textColor="#ddffffff" android:gravity="center_vertical" android:id="@id/label" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="7.0dip" android:singleLine="true" android:layout_alignParentRight="true" />
+    </LinearLayout>
+    <SeekBar android:id="@id/slider" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/auto_brightness_group" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+</RelativeLayout>

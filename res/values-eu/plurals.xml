@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="status_bar_accessibility_recent_apps">
+        <item quantity="other">%d aplikazio berri</item>
+        <item quantity="one">Aplikazio berri 1</item>
+    </plurals>
+</resources>
