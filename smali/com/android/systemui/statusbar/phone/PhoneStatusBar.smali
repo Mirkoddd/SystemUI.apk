@@ -85,6 +85,8 @@
 
 .field private mBatteryTextObserver:Lcom/android/systemui/statusbar/phone/PhoneStatusBar$BatteryTextObserver;
 
+.field mBrightness:Lcom/android/systemui/statusbar/policy/BrightnessController;
+
 .field private mBroadcastReceiver:Landroid/content/BroadcastReceiver;
 
 .field private mCallOnGoingView:Landroid/view/View;
@@ -5742,6 +5744,12 @@
 
     .line 2215
     :cond_9
+    move-object/from16 v0, p0
+
+    iget-object v12, v0, Lcom/android/systemui/statusbar/phone/PhoneStatusBar;->mBrightness:Lcom/android/systemui/statusbar/policy/BrightnessController;
+
+    invoke-virtual {v12}, Lcom/android/systemui/statusbar/policy/BrightnessController;->syncBrightness()V
+
     invoke-virtual/range {p1 .. p1}, Landroid/view/MotionEvent;->getAction()I
 
     move-result v0
@@ -8197,7 +8205,30 @@
 
     iput-boolean v0, v1, Lcom/android/systemui/statusbar/phone/PhoneStatusBar;->mUseStatusBarMarquee:Z
 
-    .line 660
+    new-instance v19, Lcom/android/systemui/statusbar/policy/BrightnessController;
+
+    const v18, 0x7f0f0097
+
+    move/from16 v0, v18
+
+    invoke-virtual {v6, v0}, Lcom/android/systemui/statusbar/phone/ExpandedView;->findViewById(I)Landroid/view/View;
+
+    move-result-object v18
+
+    check-cast v18, Lcom/android/systemui/statusbar/policy/ToggleSlider;
+
+    move-object/from16 v0, v19
+
+    move-object/from16 v1, v18
+
+    invoke-direct {v0, v4, v1}, Lcom/android/systemui/statusbar/policy/BrightnessController;-><init>(Landroid/content/Context;Lcom/android/systemui/statusbar/policy/ToggleSlider;)V
+
+    move-object/from16 v0, v19
+
+    move-object/from16 v1, p0
+
+    iput-object v0, v1, Lcom/android/systemui/statusbar/phone/PhoneStatusBar;->mBrightness:Lcom/android/systemui/statusbar/policy/BrightnessController;
+
     invoke-direct/range {p0 .. p0}, Lcom/android/systemui/statusbar/phone/PhoneStatusBar;->tw_loadNotificationShade()V
 
     .line 667
