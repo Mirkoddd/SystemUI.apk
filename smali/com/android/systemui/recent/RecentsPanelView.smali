@@ -13,6 +13,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Lcom/android/systemui/recent/RecentsPanelView$OnClickRemoveAllButton;,
         Lcom/android/systemui/recent/RecentsPanelView$OnKeyLaunchButton;,
         Lcom/android/systemui/recent/RecentsPanelView$OnClickLaunchButton;,
         Lcom/android/systemui/recent/RecentsPanelView$TaskDescriptionAdapter;,
@@ -71,6 +72,8 @@
 .field private mRecentsLaunchButton:Landroid/widget/Button;
 
 .field private mRecentsNoApps:Landroid/view/View;
+
+.field private mRecentsRemoveAllButton:Landroid/widget/Button;
 
 .field private mRecentsScrim:Landroid/view/View;
 
@@ -1416,6 +1419,17 @@
 
     iput-object v0, p0, Lcom/android/systemui/recent/RecentsPanelView;->mRecentsLaunchButton:Landroid/widget/Button;
 
+    .line 487
+    const v0, 0x7f0f00d5
+
+    invoke-virtual {p0, v0}, Lcom/android/systemui/recent/RecentsPanelView;->findViewById(I)Landroid/view/View;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/widget/Button;
+
+    iput-object v0, p0, Lcom/android/systemui/recent/RecentsPanelView;->mRecentsRemoveAllButton:Landroid/widget/Button;
+
     .line 490
     iget-object v0, p0, Lcom/android/systemui/recent/RecentsPanelView;->mRecentsContainer:Landroid/view/ViewGroup;
 
@@ -1466,10 +1480,33 @@
 
     invoke-virtual {v0, v1}, Landroid/widget/Button;->setOnKeyListener(Landroid/view/View$OnKeyListener;)V
 
+    .line 497
+    iget-object v0, p0, Lcom/android/systemui/recent/RecentsPanelView;->mRecentsRemoveAllButton:Landroid/widget/Button;
+
+    new-instance v1, Lcom/android/systemui/recent/RecentsPanelView$OnClickRemoveAllButton;
+
+    invoke-direct {v1, p0, v8}, Lcom/android/systemui/recent/RecentsPanelView$OnClickRemoveAllButton;-><init>(Lcom/android/systemui/recent/RecentsPanelView;Lcom/android/systemui/recent/RecentsPanelView$1;)V
+
+    invoke-virtual {v0, v1}, Landroid/widget/Button;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
+    .line 498
+    iget-object v0, p0, Lcom/android/systemui/recent/RecentsPanelView;->mRecentsRemoveAllButton:Landroid/widget/Button;
+
+    new-instance v1, Lcom/android/systemui/recent/RecentsPanelView$OnKeyLaunchButton;
+
+    invoke-direct {v1, p0, v8}, Lcom/android/systemui/recent/RecentsPanelView$OnKeyLaunchButton;-><init>(Lcom/android/systemui/recent/RecentsPanelView;Lcom/android/systemui/recent/RecentsPanelView$1;)V
+
+    invoke-virtual {v0, v1}, Landroid/widget/Button;->setOnKeyListener(Landroid/view/View$OnKeyListener;)V
+
     .line 501
     iget-object v0, p0, Lcom/android/systemui/recent/RecentsPanelView;->mRecentsLaunchButton:Landroid/widget/Button;
 
     const/4 v1, 0x0
+
+    invoke-virtual {v0, v1}, Landroid/widget/Button;->setVisibility(I)V
+
+    .line 501
+    iget-object v0, p0, Lcom/android/systemui/recent/RecentsPanelView;->mRecentsRemoveAllButton:Landroid/widget/Button;
 
     invoke-virtual {v0, v1}, Landroid/widget/Button;->setVisibility(I)V
 
