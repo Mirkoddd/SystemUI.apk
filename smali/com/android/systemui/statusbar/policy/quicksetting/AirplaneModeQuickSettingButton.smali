@@ -11,6 +11,8 @@
 
 .field private mContext:Landroid/content/Context;
 
+.field private mEDM:Landroid/app/enterprise/EnterpriseDeviceManager;
+
 .field private mIntentReceiver:Landroid/content/BroadcastReceiver;
 
 .field private mIsWaitingForEcmExit:Z
@@ -543,5 +545,13 @@
     invoke-direct {p0, p1}, Lcom/android/systemui/statusbar/policy/quicksetting/AirplaneModeQuickSettingButton;->showConfirmPopup(Z)V
 
     .line 152
+    return-void
+.end method
+
+.method public onLongClick()V
+    .registers 1
+
+    .prologue
+    .line 255
     return-void
 .end method

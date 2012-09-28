@@ -11,7 +11,11 @@
 
 .field private mContext:Landroid/content/Context;
 
+.field private mEDM:Landroid/app/enterprise/EnterpriseDeviceManager;
+
 .field private mIntentReceiver:Landroid/content/BroadcastReceiver;
+
+.field private mRestrictionPolicy:Landroid/app/enterprise/RestrictionPolicy;
 
 
 # direct methods
@@ -230,6 +234,12 @@
 
     move-result-object v1
 
+    const-string v2, ")"
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
     invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v1
@@ -237,6 +247,52 @@
     invoke-static {v0, v1}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 95
+    iget-object v0, p0, Lcom/android/systemui/statusbar/policy/quicksetting/BluetoothQuickSettingButton;->mContext:Landroid/content/Context;
+
+    const-string v1, "enterprise_policy"
+
+    invoke-virtual {v0, v1}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/app/enterprise/EnterpriseDeviceManager;
+
+    iput-object v0, p0, Lcom/android/systemui/statusbar/policy/quicksetting/BluetoothQuickSettingButton;->mEDM:Landroid/app/enterprise/EnterpriseDeviceManager;
+
+    .line 107
+    iget-object v0, p0, Lcom/android/systemui/statusbar/policy/quicksetting/BluetoothQuickSettingButton;->mEDM:Landroid/app/enterprise/EnterpriseDeviceManager;
+
+    invoke-virtual {v0}, Landroid/app/enterprise/EnterpriseDeviceManager;->getRestrictionPolicy()Landroid/app/enterprise/RestrictionPolicy;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/android/systemui/statusbar/policy/quicksetting/BluetoothQuickSettingButton;->mRestrictionPolicy:Landroid/app/enterprise/RestrictionPolicy;
+
+    .line 108
+    iget-object v0, p0, Lcom/android/systemui/statusbar/policy/quicksetting/BluetoothQuickSettingButton;->mRestrictionPolicy:Landroid/app/enterprise/RestrictionPolicy;
+
+    const/4 v1, 0x0
+
+    invoke-virtual {v0, v1}, Landroid/app/enterprise/RestrictionPolicy;->isSettingsChangesAllowed(Z)Z
+
+    move-result v0
+
+    if-nez v0, :cond_43
+
+    .line 109
+    const-string v0, "systemui/quicksetting/QuickSettingButton"
+
+    const-string v1, "onClick(): Bluetooth state change is not allowed"
+
+    invoke-static {v0, v1}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 133
+    :cond_23
+    :goto_23
+    return-void
+
+    .line 114
+    :cond_43
     iget-object v0, p0, Lcom/android/systemui/statusbar/policy/quicksetting/BluetoothQuickSettingButton;->mBluetoothAdapter:Landroid/bluetooth/BluetoothAdapter;
 
     if-nez v0, :cond_24
@@ -248,10 +304,7 @@
 
     invoke-static {v0, v1}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 114
-    :cond_23
-    :goto_23
-    return-void
+    goto :goto_23
 
     .line 100
     :cond_24
@@ -300,4 +353,19 @@
     invoke-virtual {v0}, Landroid/bluetooth/BluetoothAdapter;->disable()Z
 
     goto :goto_23
+.end method
+
+.method public onLongClick()V
+    .registers 3
+
+    .prologue
+    .line 137
+    const-string v0, "com.android.settings"
+
+    const-string v1, "com.android.settings.Settings$BluetoothSettingsActivity"
+
+    invoke-virtual {p0, v0, v1}, Lcom/android/systemui/statusbar/policy/quicksetting/BluetoothQuickSettingButton;->callActivity(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 138
+    return-void
 .end method

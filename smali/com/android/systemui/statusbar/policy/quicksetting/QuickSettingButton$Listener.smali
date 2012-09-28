@@ -23,3 +23,6 @@
 
 .method public abstract onClick(Z)V
 .end method
+
+.method public abstract onLongClick()V
+.end method

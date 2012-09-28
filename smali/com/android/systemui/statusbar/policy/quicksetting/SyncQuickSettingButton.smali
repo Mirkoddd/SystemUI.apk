@@ -9,7 +9,11 @@
 # instance fields
 .field private mContext:Landroid/content/Context;
 
+.field private mEDM:Landroid/app/enterprise/EnterpriseDeviceManager;
+
 .field private mIntentReceiver:Landroid/content/BroadcastReceiver;
+
+.field private mRestrictionPolicy:Landroid/app/enterprise/RestrictionPolicy;
 
 
 # direct methods
@@ -127,10 +131,12 @@
 .end method
 
 .method public onClick(Z)V
-    .registers 8
+    .registers 9
     .parameter "state"
 
     .prologue
+    const/4 v6, 0x0
+
     .line 79
     const-string v3, "systemui/quicksetting/QuickSettingButton"
 
@@ -138,7 +144,7 @@
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v5, "onClick() - state : "
+    const-string v5, "Sync  onClick("
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -148,13 +154,62 @@
 
     move-result-object v4
 
+    const-string v5, ")"
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
     invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v4
 
     invoke-static {v3, v4}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 81
+    .line 93
+    iget-object v3, p0, Lcom/android/systemui/statusbar/policy/quicksetting/SyncQuickSettingButton;->mContext:Landroid/content/Context;
+
+    const-string v4, "enterprise_policy"
+
+    invoke-virtual {v3, v4}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Landroid/app/enterprise/EnterpriseDeviceManager;
+
+    iput-object v3, p0, Lcom/android/systemui/statusbar/policy/quicksetting/SyncQuickSettingButton;->mEDM:Landroid/app/enterprise/EnterpriseDeviceManager;
+
+    .line 94
+    iget-object v3, p0, Lcom/android/systemui/statusbar/policy/quicksetting/SyncQuickSettingButton;->mEDM:Landroid/app/enterprise/EnterpriseDeviceManager;
+
+    invoke-virtual {v3}, Landroid/app/enterprise/EnterpriseDeviceManager;->getRestrictionPolicy()Landroid/app/enterprise/RestrictionPolicy;
+
+    move-result-object v3
+
+    iput-object v3, p0, Lcom/android/systemui/statusbar/policy/quicksetting/SyncQuickSettingButton;->mRestrictionPolicy:Landroid/app/enterprise/RestrictionPolicy;
+
+    .line 95
+    iget-object v3, p0, Lcom/android/systemui/statusbar/policy/quicksetting/SyncQuickSettingButton;->mRestrictionPolicy:Landroid/app/enterprise/RestrictionPolicy;
+
+    invoke-virtual {v3, v6}, Landroid/app/enterprise/RestrictionPolicy;->isSettingsChangesAllowed(Z)Z
+
+    move-result v3
+
+    if-nez v3, :cond_43
+
+    .line 96
+    const-string v3, "systemui/quicksetting/QuickSettingButton"
+
+    const-string v4, "onClick(): Sync state change is not allowed"
+
+    invoke-static {v3, v4}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 126
+    :goto_42
+    return-void
+
+    .line 101
+    :cond_43
     move v0, p1
 
     .line 83
@@ -181,12 +236,38 @@
 
     invoke-direct {v3, p0, v0, v2}, Lcom/android/systemui/statusbar/policy/quicksetting/SyncQuickSettingButton$2;-><init>(Lcom/android/systemui/statusbar/policy/quicksetting/SyncQuickSettingButton;ZZ)V
 
-    const/4 v4, 0x0
-
-    new-array v4, v4, [Ljava/lang/Void;
+    new-array v4, v6, [Ljava/lang/Void;
 
     invoke-virtual {v3, v4}, Lcom/android/systemui/statusbar/policy/quicksetting/SyncQuickSettingButton$2;->execute([Ljava/lang/Object;)Landroid/os/AsyncTask;
 
-    .line 106
+    goto :goto_42
+.end method
+
+.method public onLongClick()V
+    .registers 3
+
+    .prologue
+    .line 130
+    invoke-virtual {p0}, Lcom/android/systemui/statusbar/policy/quicksetting/SyncQuickSettingButton;->statusBarCollapse()V
+
+    .line 131
+    new-instance v0, Landroid/content/Intent;
+
+    const-string v1, "android.settings.ADD_ACCOUNT_SETTINGS"
+
+    invoke-direct {v0, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+
+    .line 132
+    .local v0, mIntent:Landroid/content/Intent;
+    const/high16 v1, 0x1000
+
+    invoke-virtual {v0, v1}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
+
+    .line 133
+    iget-object v1, p0, Lcom/android/systemui/statusbar/policy/quicksetting/SyncQuickSettingButton;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v1, v0}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
+
+    .line 134
     return-void
 .end method

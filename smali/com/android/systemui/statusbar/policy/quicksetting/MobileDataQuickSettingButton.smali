@@ -23,13 +23,15 @@
 
 .field private mContext:Landroid/content/Context;
 
+.field private mEDM:Landroid/app/enterprise/EnterpriseDeviceManager;
+
 .field private mIntentReceiver:Landroid/content/BroadcastReceiver;
 
 .field private mMobileData:Z
 
 .field private mMobileDataObserver:Lcom/android/systemui/statusbar/policy/quicksetting/MobileDataQuickSettingButton$MobileDataObserver;
 
-.field mStatusBarManager:Landroid/app/StatusBarManager;
+.field private mRestrictionPolicy:Landroid/app/enterprise/RestrictionPolicy;
 
 
 # direct methods
@@ -983,4 +985,19 @@
     invoke-direct {p0, p1}, Lcom/android/systemui/statusbar/policy/quicksetting/MobileDataQuickSettingButton;->setMobileData(Z)V
 
     goto :goto_14
+.end method
+
+.method public onLongClick()V
+    .registers 3
+
+    .prologue
+    .line 191
+    const-string v0, "com.android.phone"
+
+    const-string v1, "com.android.phone.Settings"
+
+    invoke-virtual {p0, v0, v1}, Lcom/android/systemui/statusbar/policy/quicksetting/MobileDataQuickSettingButton;->callActivity(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 192
+    return-void
 .end method

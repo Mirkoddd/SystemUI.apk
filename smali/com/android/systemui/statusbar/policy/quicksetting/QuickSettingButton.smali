@@ -4,6 +4,7 @@
 
 # interfaces
 .implements Landroid/view/View$OnClickListener;
+.implements Landroid/view/View$OnLongClickListener;
 
 
 # annotations
@@ -57,6 +58,8 @@
 
 .field private mOnIconID2:I
 
+.field mStatusBarManager:Landroid/app/StatusBarManager;
+
 .field private mTextID:I
 
 
@@ -97,7 +100,20 @@
     .line 170
     iput-object p1, p0, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingButton;->mContext:Landroid/content/Context;
 
-    .line 172
+    .line 208
+    iget-object v0, p0, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingButton;->mContext:Landroid/content/Context;
+
+    const-string v1, "statusbar"
+
+    invoke-virtual {v0, v1}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/app/StatusBarManager;
+
+    iput-object v0, p0, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingButton;->mStatusBarManager:Landroid/app/StatusBarManager;
+
+    .line 209
     const v0, 0x7f030021
 
     invoke-static {p1, v0, p0}, Landroid/view/View;->inflate(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;
@@ -174,6 +190,38 @@
 
 
 # virtual methods
+.method protected callActivity(Ljava/lang/String;Ljava/lang/String;)V
+    .registers 5
+    .parameter "pkg"
+    .parameter "activity"
+
+    .prologue
+    .line 197
+    invoke-virtual {p0}, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingButton;->statusBarCollapse()V
+
+    .line 198
+    new-instance v0, Landroid/content/Intent;
+
+    invoke-direct {v0}, Landroid/content/Intent;-><init>()V
+
+    .line 199
+    .local v0, mIntent:Landroid/content/Intent;
+    invoke-virtual {v0, p1, p2}, Landroid/content/Intent;->setClassName(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+
+    .line 200
+    const/high16 v1, 0x1000
+
+    invoke-virtual {v0, v1}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
+
+    .line 201
+    iget-object v1, p0, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingButton;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v1, v0}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
+
+    .line 202
+    return-void
+.end method
+
 .method public changeTextSize(I)V
     .registers 9
     .parameter "diff"
@@ -368,7 +416,10 @@
     .line 192
     invoke-virtual {p0, p0}, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingButton;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 194
+    .line 230
+    invoke-virtual {p0, p0}, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingButton;->setOnLongClickListener(Landroid/view/View$OnLongClickListener;)V
+
+    .line 232
     :try_start_6
     iget-object v0, p0, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingButton;->mListener:Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingButton$Listener;
 
@@ -462,6 +513,27 @@
 
     .line 206
     return-void
+.end method
+
+.method public onLongClick(Landroid/view/View;)Z
+    .registers 3
+    .parameter "v"
+
+    .prologue
+    .line 100
+    iget-object v0, p0, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingButton;->mListener:Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingButton$Listener;
+
+    invoke-interface {v0}, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingButton$Listener;->onLongClick()V
+
+    .line 101
+    const/4 v0, 0x0
+
+    invoke-virtual {p1, v0}, Landroid/view/View;->setPressed(Z)V
+
+    .line 102
+    const/4 v0, 0x1
+
+    return v0
 .end method
 
 .method public setActivateStatus(I)V
@@ -694,6 +766,35 @@
     .line 136
     iput p1, p0, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingButton;->mTextID:I
 
-    .line 137
+    .line 154
     return-void
+.end method
+
+.method protected statusBarCollapse()V
+    .registers 3
+
+    .prologue
+    .line 185
+    iget-object v0, p0, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingButton;->mStatusBarManager:Landroid/app/StatusBarManager;
+
+    if-eqz v0, :cond_a
+
+    .line 186
+    iget-object v0, p0, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingButton;->mStatusBarManager:Landroid/app/StatusBarManager;
+
+    invoke-virtual {v0}, Landroid/app/StatusBarManager;->collapse()V
+
+    .line 190
+    :goto_9
+    return-void
+
+    .line 188
+    :cond_a
+    const-string v0, "STATUSBAR-QuickSettingButton"
+
+    const-string v1, "mStatusBarManager = null, wasn\'t able to collapse it"
+
+    invoke-static {v0, v1}, Landroid/util/Slog;->e(Ljava/lang/String;Ljava/lang/String;)I
+
+    goto :goto_9
 .end method

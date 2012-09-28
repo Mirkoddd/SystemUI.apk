@@ -235,6 +235,12 @@
 
     move-result-object v2
 
+    const-string v3, ")"
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
     invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v2
@@ -289,6 +295,21 @@
     const/4 v0, 0x2
 
     goto :goto_1f
+.end method
+
+.method public onLongClick()V
+    .registers 3
+
+    .prologue
+    .line 106
+    const-string v0, "com.android.settings"
+
+    const-string v1, "com.android.settings.Settings$SoundSettingsActivity"
+
+    invoke-virtual {p0, v0, v1}, Lcom/android/systemui/statusbar/policy/quicksetting/SilentModeQuickSettingButton;->callActivity(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 107
+    return-void
 .end method
 
 .method public updateStatus()V

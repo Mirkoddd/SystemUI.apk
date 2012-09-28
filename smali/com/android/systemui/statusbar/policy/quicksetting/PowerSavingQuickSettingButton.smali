@@ -27,6 +27,8 @@
 
 .field private mContext:Landroid/content/Context;
 
+.field private mEDM:Landroid/app/enterprise/EnterpriseDeviceManager;
+
 .field private mPowerSavingObserver:Lcom/android/systemui/statusbar/policy/quicksetting/PowerSavingQuickSettingButton$PowerSavingObserver;
 
 .field private mState:Z
@@ -327,4 +329,12 @@
     const/4 v0, 0x0
 
     goto :goto_23
+.end method
+
+.method public onLongClick()V
+    .registers 1
+
+    .prologue
+    .line 95
+    return-void
 .end method

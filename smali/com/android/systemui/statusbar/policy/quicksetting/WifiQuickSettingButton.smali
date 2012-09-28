@@ -19,6 +19,8 @@
 
 .field private mContext:Landroid/content/Context;
 
+.field private mEDM:Landroid/app/enterprise/EnterpriseDeviceManager;
+
 .field private mIntentReceiver:Landroid/content/BroadcastReceiver;
 
 .field mProgressDialog:Landroid/app/AlertDialog;
@@ -699,4 +701,19 @@
     invoke-virtual {p0, v2}, Lcom/android/systemui/statusbar/policy/quicksetting/WifiQuickSettingButton;->setActivateStatus(I)V
 
     goto :goto_46
+.end method
+
+.method public onLongClick()V
+    .registers 3
+
+    .prologue
+    .line 178
+    const-string v0, "com.android.settings"
+
+    const-string v1, "com.android.settings.Settings$WifiSettingsActivity"
+
+    invoke-virtual {p0, v0, v1}, Lcom/android/systemui/statusbar/policy/quicksetting/WifiQuickSettingButton;->callActivity(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 179
+    return-void
 .end method
