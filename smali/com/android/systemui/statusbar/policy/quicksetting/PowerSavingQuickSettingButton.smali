@@ -332,9 +332,16 @@
 .end method
 
 .method public onLongClick()V
-    .registers 1
+    .registers 3
 
     .prologue
     .line 95
+    const-string v0, "com.android.settings"
+
+    const-string v1, "com.android.settings.Settings$PowerUsageSummaryActivity"
+
+    invoke-virtual {p0, v0, v1}, Lcom/android/systemui/statusbar/policy/quicksetting/PowerSavingQuickSettingButton;->callActivity(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 96
     return-void
 .end method

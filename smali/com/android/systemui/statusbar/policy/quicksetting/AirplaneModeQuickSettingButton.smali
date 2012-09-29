@@ -549,9 +549,16 @@
 .end method
 
 .method public onLongClick()V
-    .registers 1
+    .registers 3
 
     .prologue
     .line 255
+    const-string v0, "com.android.settings"
+
+    const-string v1, "com.android.settings.Settings$WirelessSettingsActivity"
+
+    invoke-virtual {p0, v0, v1}, Lcom/android/systemui/statusbar/policy/quicksetting/AirplaneModeQuickSettingButton;->callActivity(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 256
     return-void
 .end method
