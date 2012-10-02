@@ -379,13 +379,6 @@
     .registers 4
 
     .prologue
-    .line 140
-    const-string v0, "systemui/quicksetting/QuickSettingButton"
-
-    const-string v1, "ACTION_CONFIGURATION_CHANGED - mBtnText.setText();"
-
-    invoke-static {v0, v1}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
-
     .line 141
     iget-object v0, p0, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingButton;->mBtnText:Landroid/widget/TextView;
 
@@ -545,35 +538,6 @@
 
     const v3, 0x7f020171
 
-    .line 97
-    const-string v0, "systemui/quicksetting/QuickSettingButton"
-
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v2, "setActivateStatus("
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    const-string v2, ") - 1:on, 2:off, 3:dim"
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-static {v0, v1}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
-
     .line 98
     iput p1, p0, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingButton;->mActivateStatus:I
 
@@ -613,6 +577,13 @@
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setContentDescription(Ljava/lang/CharSequence;)V
 
+    .line 118
+    const-string v0, "systemui/quicksetting/QuickSettingButton"
+
+    const-string v1, "Button ON"
+
+    invoke-static {v0, v1}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
+
     goto :goto_2b
 
     .line 108
@@ -641,6 +612,13 @@
     const-string v1, "On\n"
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setContentDescription(Ljava/lang/CharSequence;)V
+
+    .line 113
+    const-string v0, "systemui/quicksetting/QuickSettingButton"
+
+    const-string v1, "Button ON2"
+
+    invoke-static {v0, v1}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     goto :goto_2b
 
@@ -673,6 +651,13 @@
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setContentDescription(Ljava/lang/CharSequence;)V
 
+    .line 119
+    const-string v0, "systemui/quicksetting/QuickSettingButton"
+
+    const-string v1, "Button DIM"
+
+    invoke-static {v0, v1}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
+
     goto :goto_2b
 
     .line 120
@@ -702,9 +687,16 @@
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setContentDescription(Ljava/lang/CharSequence;)V
 
-    goto :goto_2b
+    .line 124
+    const-string v0, "systemui/quicksetting/QuickSettingButton"
 
-    .line 126
+    const-string v1, "Button OFF"
+
+    invoke-static {v0, v1}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    goto/16 :goto_2b
+
+    .line 125
     :pswitch_9b
     iget-object v0, p0, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingButton;->mBtnImage:Landroid/widget/ImageView;
 
@@ -730,6 +722,13 @@
     const-string v1, "Off\n"
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setContentDescription(Ljava/lang/CharSequence;)V
+
+    .line 130
+    const-string v0, "systemui/quicksetting/QuickSettingButton"
+
+    const-string v1, "Button OFF2"
+
+    invoke-static {v0, v1}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     goto/16 :goto_2b
 
@@ -790,7 +789,7 @@
 
     .line 188
     :cond_a
-    const-string v0, "STATUSBAR-QuickSettingButton"
+    const-string v0, "systemui/quicksetting/QuickSettingButton"
 
     const-string v1, "mStatusBarManager = null, wasn\'t able to collapse it"
 
