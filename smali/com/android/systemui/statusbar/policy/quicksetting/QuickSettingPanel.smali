@@ -22,8 +22,6 @@
 
 .field private mButtonCnt:I
 
-.field mContentAnim:Landroid/animation/AnimatorSet;
-
 .field private mContext:Landroid/content/Context;
 
 .field private mCurButtonNum:I
@@ -477,13 +475,6 @@
     new-array v7, v7, [Z
 
     iput-object v7, p0, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingPanel;->isExist:[Z
-
-    .line 204
-    new-instance v7, Landroid/animation/AnimatorSet;
-
-    invoke-direct {v7}, Landroid/animation/AnimatorSet;-><init>()V
-
-    iput-object v7, p0, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingPanel;->mContentAnim:Landroid/animation/AnimatorSet;
 
     .line 205
     iget-object v7, p0, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingPanel;->mlp:Landroid/widget/LinearLayout$LayoutParams;
@@ -960,40 +951,20 @@
 
     iput v0, p0, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingPanel;->mPosition:I
 
-    .line 254
+    .line 257
     :goto_16
     iget v0, p0, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingPanel;->mPosition:I
 
-    if-gez v0, :cond_43
-
-    .line 255
-    const/4 v0, 0x0
-
-    iput v0, p0, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingPanel;->mPosition:I
-
-    .line 256
-    :cond_43
-    iget-object v0, p0, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingPanel;->mContentAnim:Landroid/animation/AnimatorSet;
-
-    invoke-virtual {v0}, Landroid/animation/AnimatorSet;->isRunning()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_54
-
-    .line 257
-    iget-object v0, p0, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingPanel;->mContentAnim:Landroid/animation/AnimatorSet;
-
-    invoke-virtual {v0}, Landroid/animation/AnimatorSet;->cancel()V
+    if-gez v0, :cond_1d
 
     .line 258
     const/4 v0, 0x0
 
-    invoke-virtual {p0, v0}, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingPanel;->setTranslationX(F)V
+    iput v0, p0, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingPanel;->mPosition:I
 
-    .line 259
-    :cond_54
-    if-nez p1, :cond_5d
+    .line 260
+    :cond_1d
+    if-nez p1, :cond_26
 
     .line 261
     iget v0, p0, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingPanel;->mPosition:I
@@ -1005,7 +976,7 @@
     invoke-virtual {p0, v0}, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingPanel;->setTranslationX(F)V
 
     .line 263
-    :cond_5d
+    :cond_26
     const-string v0, "systemui/quicksettingpanel"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -1067,57 +1038,57 @@
 
     .prologue
     .line 267
-    const-string v1, "translationX"
+    new-instance v0, Landroid/animation/AnimatorSet;
 
-    const/4 v2, 0x2
+    invoke-direct {v0}, Landroid/animation/AnimatorSet;-><init>()V
 
-    new-array v2, v2, [F
+    .line 268
+    .local v0, ContentAnim:Landroid/animation/AnimatorSet;
+    const-string v2, "translationX"
 
-    const/4 v3, 0x0
+    const/4 v3, 0x2
 
-    iget v4, p0, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingPanel;->mPosition:I
-
-    neg-int v4, v4
-
-    int-to-float v4, v4
-
-    aput v4, v2, v3
-
-    const/4 v3, 0x1
+    new-array v3, v3, [F
 
     const/4 v4, 0x0
 
-    aput v4, v2, v3
+    iget v5, p0, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingPanel;->mPosition:I
 
-    invoke-static {p0, v1, v2}, Landroid/animation/ObjectAnimator;->ofFloat(Ljava/lang/Object;Ljava/lang/String;[F)Landroid/animation/ObjectAnimator;
+    neg-int v5, v5
 
-    move-result-object v0
+    int-to-float v5, v5
 
-    .line 268
-    .local v0, quickSettingAnim:Landroid/animation/Animator;
-    new-instance v1, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingPanel$SineInOut70;
+    aput v5, v3, v4
 
-    invoke-direct {v1, p0}, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingPanel$SineInOut70;-><init>(Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingPanel;)V
+    const/4 v4, 0x1
 
-    invoke-virtual {v0, v1}, Landroid/animation/ObjectAnimator;->setInterpolator(Landroid/animation/TimeInterpolator;)V
+    const/4 v5, 0x0
+
+    aput v5, v3, v4
+
+    invoke-static {p0, v2, v3}, Landroid/animation/ObjectAnimator;->ofFloat(Ljava/lang/Object;Ljava/lang/String;[F)Landroid/animation/ObjectAnimator;
+
+    move-result-object v1
 
     .line 269
-    iget-object v1, p0, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingPanel;->mContentAnim:Landroid/animation/AnimatorSet;
+    .local v1, quickSettingAnim:Landroid/animation/Animator;
+    new-instance v2, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingPanel$SineInOut70;
 
-    invoke-virtual {v1, v0}, Landroid/animation/AnimatorSet;->play(Landroid/animation/Animator;)Landroid/animation/AnimatorSet$Builder;
+    invoke-direct {v2, p0}, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingPanel$SineInOut70;-><init>(Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingPanel;)V
+
+    invoke-virtual {v1, v2}, Landroid/animation/ObjectAnimator;->setInterpolator(Landroid/animation/TimeInterpolator;)V
 
     .line 270
-    iget-object v1, p0, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingPanel;->mContentAnim:Landroid/animation/AnimatorSet;
-
-    const-wide/16 v2, 0x2bc
-
-    invoke-virtual {v1, v2, v3}, Landroid/animation/AnimatorSet;->setDuration(J)Landroid/animation/AnimatorSet;
+    invoke-virtual {v0, v1}, Landroid/animation/AnimatorSet;->play(Landroid/animation/Animator;)Landroid/animation/AnimatorSet$Builder;
 
     .line 271
-    iget-object v1, p0, Lcom/android/systemui/statusbar/policy/quicksetting/QuickSettingPanel;->mContentAnim:Landroid/animation/AnimatorSet;
+    const-wide/16 v2, 0x3e8
 
-    invoke-virtual {v1}, Landroid/animation/AnimatorSet;->start()V
+    invoke-virtual {v0, v2, v3}, Landroid/animation/AnimatorSet;->setDuration(J)Landroid/animation/AnimatorSet;
 
     .line 272
+    invoke-virtual {v0}, Landroid/animation/AnimatorSet;->start()V
+
+    .line 273
     return-void
 .end method
