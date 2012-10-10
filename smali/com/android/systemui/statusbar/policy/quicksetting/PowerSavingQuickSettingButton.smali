@@ -27,8 +27,6 @@
 
 .field private mContext:Landroid/content/Context;
 
-.field private mEDM:Landroid/app/enterprise/EnterpriseDeviceManager;
-
 .field private mPowerSavingObserver:Lcom/android/systemui/statusbar/policy/quicksetting/PowerSavingQuickSettingButton$PowerSavingObserver;
 
 .field private mState:Z

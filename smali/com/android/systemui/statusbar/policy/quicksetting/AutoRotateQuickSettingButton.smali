@@ -21,10 +21,6 @@
 
 .field private mContext:Landroid/content/Context;
 
-.field private mEDM:Landroid/app/enterprise/EnterpriseDeviceManager;
-
-.field private mRestrictionPolicy:Landroid/app/enterprise/RestrictionPolicy;
-
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;)V
@@ -247,12 +243,6 @@
 
     move-result-object v1
 
-    const-string v2, ")"
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
     invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v1
@@ -260,52 +250,6 @@
     invoke-static {v0, v1}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 113
-    iget-object v0, p0, Lcom/android/systemui/statusbar/policy/quicksetting/AutoRotateQuickSettingButton;->mContext:Landroid/content/Context;
-
-    const-string v1, "enterprise_policy"
-
-    invoke-virtual {v0, v1}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, Landroid/app/enterprise/EnterpriseDeviceManager;
-
-    iput-object v0, p0, Lcom/android/systemui/statusbar/policy/quicksetting/AutoRotateQuickSettingButton;->mEDM:Landroid/app/enterprise/EnterpriseDeviceManager;
-
-    .line 133
-    iget-object v0, p0, Lcom/android/systemui/statusbar/policy/quicksetting/AutoRotateQuickSettingButton;->mEDM:Landroid/app/enterprise/EnterpriseDeviceManager;
-
-    invoke-virtual {v0}, Landroid/app/enterprise/EnterpriseDeviceManager;->getRestrictionPolicy()Landroid/app/enterprise/RestrictionPolicy;
-
-    move-result-object v0
-
-    iput-object v0, p0, Lcom/android/systemui/statusbar/policy/quicksetting/AutoRotateQuickSettingButton;->mRestrictionPolicy:Landroid/app/enterprise/RestrictionPolicy;
-
-    .line 134
-    iget-object v0, p0, Lcom/android/systemui/statusbar/policy/quicksetting/AutoRotateQuickSettingButton;->mRestrictionPolicy:Landroid/app/enterprise/RestrictionPolicy;
-
-    const/4 v1, 0x0
-
-    invoke-virtual {v0, v1}, Landroid/app/enterprise/RestrictionPolicy;->isSettingsChangesAllowed(Z)Z
-
-    move-result v0
-
-    if-nez v0, :cond_43
-
-    .line 135
-    const-string v0, "systemui/quicksetting/QuickSettingButton"
-
-    const-string v1, "onClick(): Rotation state change is not allowed"
-
-    invoke-static {v0, v1}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 143
-    :cond_1f
-    :goto_1f
-    return-void
-
-    .line 140
-    :cond_43
     iget-boolean v0, p0, Lcom/android/systemui/statusbar/policy/quicksetting/AutoRotateQuickSettingButton;->mAutoRotation:Z
 
     if-eq p1, v0, :cond_1f
@@ -313,7 +257,9 @@
     .line 114
     invoke-direct {p0, p1}, Lcom/android/systemui/statusbar/policy/quicksetting/AutoRotateQuickSettingButton;->setAutoRotation(Z)V
 
-    goto :goto_1f
+    .line 116
+    :cond_1f
+    return-void
 .end method
 
 .method public onLongClick()V

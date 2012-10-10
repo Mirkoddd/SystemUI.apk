@@ -23,15 +23,13 @@
 
 .field private mContext:Landroid/content/Context;
 
-.field private mEDM:Landroid/app/enterprise/EnterpriseDeviceManager;
-
 .field private mIntentReceiver:Landroid/content/BroadcastReceiver;
 
 .field private mMobileData:Z
 
 .field private mMobileDataObserver:Lcom/android/systemui/statusbar/policy/quicksetting/MobileDataQuickSettingButton$MobileDataObserver;
 
-.field private mRestrictionPolicy:Landroid/app/enterprise/RestrictionPolicy;
+.field mStatusBarManager:Landroid/app/StatusBarManager;
 
 
 # direct methods

@@ -11,8 +11,6 @@
 
 .field private mContext:Landroid/content/Context;
 
-.field private mEDM:Landroid/app/enterprise/EnterpriseDeviceManager;
-
 .field private mIntentReceiver:Landroid/content/BroadcastReceiver;
 
 .field private mIsWaitingForEcmExit:Z
